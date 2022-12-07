@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color:rgb(194, 192, 192);
+    font-family: Verdana, sans-serif;
+}
+.calc {
+    background-color: black;
+    max-width: 500px;
+    min-width: 300px;
+    color: white;
+    padding: 10px 20px 50px 20px;
+    box-shadow: 1px 1px 10px black;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid white;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.5s ease, border-radius 0.1s ease;
+    border-radius: 5px;
+}
+.button-radius50 {
+    border-radius: 50%;
+}
+
+.button:hover {
+    background-color: rgb(92, 92, 92);
+}
+.output {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border: 1px solid white;
+    height: 50px;
+    padding: 10px 10px;
+    font-size: 30px;
+    background-color: rgb(36, 35, 34);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    transition: background-color 0.5s ease;
+}
+.output-light {
+    background-color: rgb(51, 97, 65);
+}
+.calc-name {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 5px;
+    font-size: 11px;
+    opacity: 0.8;
+    font-family:monospace;
+    transition: opacity 0.5s ease;
+    margin-bottom: 40px;
+}
+.calc-name:hover {
+    opacity: 1;
+}
+.style-button {
+    background-color: black;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+.style-button:hover {
+    background-color: rgb(59, 59, 59);
+}
