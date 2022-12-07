@@ -1,6 +1,10 @@
 * {
     margin: 0;
     padding: 0;
+    text-decoration: none;
+}
+a:visited {
+    color: inherit;
 }
 body {
     height: 100vh;
@@ -8,16 +12,16 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color:rgb(194, 192, 192);
+    background: linear-gradient(#58a5c4 , #7978ca );
     font-family: Verdana, sans-serif;
 }
 .calc {
-    background-color: black;
+    background: rgb(27, 27, 27);
     max-width: 500px;
     min-width: 300px;
     color: white;
     padding: 10px 20px 50px 20px;
-    box-shadow: 1px 1px 10px black;
+    box-shadow: 1px 1px 20px 2px rgb(24, 21, 51);
     border-radius: 10px;
     margin-bottom: 20px;
 }
@@ -25,26 +29,52 @@ body {
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     gap: 5px;
 }
 .button {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid white;
+    font-size: 20px;
     text-align: center;
     cursor: pointer;
+    background-color: rgb(40, 100, 100);
     transition: background-color 0.5s ease, border-radius 0.1s ease;
     border-radius: 5px;
 }
-.button-radius50 {
-    border-radius: 50%;
+.button-radius {
+    border-radius: 20%;
 }
-
 .button:hover {
-    background-color: rgb(92, 92, 92);
+    background-color: rgb(61, 141, 141);
+}
+.clear-button {
+    grid-column: 3 / 5;
+    background-color:rgb(110, 61, 39);
+}
+.clear-button:hover {
+    background-color:rgb(151, 89, 60);
+}
+.equal-button{
+    background-color:rgb(42, 85, 46);
+}
+.equal-button:hover {
+    background-color: rgb(59, 116, 65);
+}
+.sign-button {
+    background-color: rgb(84, 47, 85);
+}
+.sign-button:hover {
+    background-color: rgb(124, 71, 126);
+}
+.del-button {
+    background-color: rgb(118, 126, 71);
+}
+.del-button:hover {
+    background-color: rgb(165, 177, 99);
 }
 .output {
     display: flex;
@@ -60,7 +90,7 @@ body {
     transition: background-color 0.5s ease;
 }
 .output-light {
-    background-color: rgb(51, 97, 65);
+    background-color: rgb(37, 70, 47);
 }
 .calc-name {
     display: flex;
