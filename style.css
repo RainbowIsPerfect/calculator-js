@@ -17,6 +17,7 @@ body {
     align-items: center;
     background: linear-gradient(#a1bac4 , #ababcf );
     font-family: Verdana, sans-serif;
+
 }
 .calc {
     background: rgb(51, 51, 51);
@@ -31,7 +32,6 @@ body {
     0 0 30px rgba(0, 0, 0, .5) inset;
     border-radius: 10px;
     margin-bottom: 20px;
-
 }
 .buttons {
     display: grid;
@@ -51,9 +51,10 @@ body {
     border-radius: 5px;
     color: white;
     background-image: linear-gradient(to bottom right, rgb(107, 107, 107) 5%,rgb(70, 70, 70));
-    box-shadow: 0px 2px 1px 1px rgb(83, 83, 83);
+    box-shadow: 0px 2px 2px 3px rgb(83, 83, 83);
     transition: border-radius 0.1s ease, transform 0.2s ease;
 }
+
 .button-radius {
     border-radius: 15%;
 }
@@ -62,7 +63,7 @@ body {
 }
 .button:active {
     background-image: linear-gradient(to bottom right, rgb(151, 151, 151) 1%,rgb(243, 241, 241));
-    transform: scale(0.95);
+    transform: scale(0.97);
 }
 .clear-button {
     grid-column: 3 / 5;
