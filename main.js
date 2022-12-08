@@ -7,7 +7,9 @@ const borderRadiusButton = document.querySelector('#border-radius-button');
 const colorButton = document.querySelector('#output-color-button');
 const dotButton = document.querySelector('.button-dot');
 const textAlignButton = document.querySelector('#output-text-align-button');
-
+const themeButton = document.querySelector('#theme');
+const calcVersion = document.querySelector('.calc-name');
+const body = document.querySelector('body');
 
 const numbersArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
 const operatorsArray = ['+', '-', '/', '*', '%'];
@@ -151,4 +153,20 @@ colorButton.addEventListener('click', function () {
 
 textAlignButton.addEventListener('click', function () {
     output.classList.toggle('output-txt');
+})
+
+themeButton.addEventListener('click', function () {
+    if (themeButton.checked) {
+        calcBlock.classList.add('calc-light-theme');
+        buttonItems.forEach(button => button.classList.add('button-light-theme'));
+        calcVersion.classList.add('calc-name-light-theme');
+        output.classList.add('output-light-theme');
+        body.classList.add('body-light-theme');
+    } else {
+        calcBlock.classList.remove('calc-light-theme');
+        buttonItems.forEach(button => button.classList.remove('button-light-theme'));
+        calcVersion.classList.remove('calc-name-light-theme');
+        output.classList.remove('output-light-theme');
+        body.classList.remove('body-light-theme');
+    }
 })
