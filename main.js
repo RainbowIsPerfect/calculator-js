@@ -46,8 +46,13 @@ buttonItems.forEach(function (button) {
                 dotButton.removeAttribute('disabled', '')
             }
         } else if (operatorsArray.includes(button.innerHTML) && numOne != '') {
-            operator = button.innerHTML;
-        } else if (this.innerHTML == '=' && numTwo != '') {
+            if (numOne == '.'){
+                operator = '';
+            } else {
+                dotButton.removeAttribute('disabled', '')
+                operator = button.innerHTML;
+            }
+        } else if (this.innerHTML == '=' && numTwo != '' && numTwo != '.') {
             switch (operator) {
                 case '+':
                     output.setAttribute('value', +numOne + +numTwo);
@@ -63,6 +68,7 @@ buttonItems.forEach(function (button) {
                     break;
                 case '/':
                     let i = (numOne / numTwo).toFixed(2).toString();
+                    output.setAttribute('value', i);
                     if (i[i.length - 1] == '0') {
                         i = i.replace(/.$/, '');
                         output.setAttribute('value', i);
@@ -70,7 +76,7 @@ buttonItems.forEach(function (button) {
                             i = i.replace(/..$/, '');
                             output.setAttribute('value', i);
                         }
-                    } else output.setAttribute('value', i);
+                    }
             }
             numOne = output.getAttribute('value');
             numTwo = '';
