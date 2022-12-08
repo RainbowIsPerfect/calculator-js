@@ -33,19 +33,44 @@ buttonItems.forEach(function (button) {
             }
             if (output.getAttribute('value') == '') output.setAttribute('value', 0);;
         } else if (numbersArray.includes(button.innerHTML)) {
-            if (numOne != '' && operator != '') {
-                numTwo += button.innerHTML;
-                output.setAttribute('value', numTwo);
+            if (numOne !== '' && operator != '') {
+                if (this.innerHTML == '0' && output.value == '0') {
+                    numTwo = 0;
+                    output.setAttribute('value', numTwo);
+                } else {
+                    if (numTwo == '0'){
+                        numTwo = button.innerHTML;
+                        output.setAttribute('value', numTwo);
+                    } else {
+                        numTwo += button.innerHTML;
+                        output.setAttribute('value', numTwo);
+                    }
+                }
             } else {
-                numOne += button.innerHTML;
-                output.setAttribute('value', numOne);
+                if (numOne == 'Ошибка!') {
+                    numOne = button.innerHTML;
+                    output.setAttribute('value', numOne);
+                } else {
+                    if (this.innerHTML == '0' && output.value == '0') {
+                        numOne = 0;
+                        output.setAttribute('value', numOne);
+                    } else {
+                        if (numOne == '0'){
+                            numOne = button.innerHTML;
+                            output.setAttribute('value', numOne);
+                        } else {
+                            numOne += button.innerHTML;
+                            output.setAttribute('value', numOne);
+                        }
+                    }
+                }
             }
             if (output.getAttribute('value').includes('.')) {
                 dotButton.setAttribute('disabled', '');
             } else {
                 dotButton.removeAttribute('disabled', '')
             }
-        } else if (operatorsArray.includes(button.innerHTML) && numOne != '') {
+        } else if (operatorsArray.includes(button.innerHTML) && numOne !== '') {
             if (numOne == '.'){
                 operator = '';
             } else {
@@ -65,16 +90,36 @@ buttonItems.forEach(function (button) {
                     break;
                 case '%':
                     output.setAttribute('value', numOne % numTwo);
-                    break;
-                case '/':
-                    let i = (numOne / numTwo).toFixed(2).toString();
-                    output.setAttribute('value', i);
-                    if (i[i.length - 1] == '0') {
-                        i = i.replace(/.$/, '');
+                    if (numTwo == '0') {
+                        output.setAttribute('value', 'Ошибка!');
+                        numOne = 0;
+                    } else {
+                        let i = (numOne % numTwo).toFixed(2).toString();
                         output.setAttribute('value', i);
                         if (i[i.length - 1] == '0') {
-                            i = i.replace(/..$/, '');
+                            i = i.replace(/.$/, '');
                             output.setAttribute('value', i);
+                            if (i[i.length - 1] == '0') {
+                                i = i.replace(/..$/, '');
+                                output.setAttribute('value', i);
+                            }
+                        }
+                    }
+                    break;
+                case '/':
+                    if (numTwo == '0') {
+                        output.setAttribute('value', 'Ошибка!');
+                        numOne = 0;
+                    } else {
+                        let i = (numOne / numTwo).toFixed(2).toString();
+                        output.setAttribute('value', i);
+                        if (i[i.length - 1] == '0') {
+                            i = i.replace(/.$/, '');
+                            output.setAttribute('value', i);
+                            if (i[i.length - 1] == '0') {
+                                i = i.replace(/..$/, '');
+                                output.setAttribute('value', i);
+                            }
                         }
                     }
             }
