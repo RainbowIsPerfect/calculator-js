@@ -79,7 +79,7 @@ body {
     background-image: linear-gradient(to bottom right, rgb(189, 189, 189) 1%,rgb(172, 172, 172));
 }
 .button-radius {
-    border-radius: 15%;
+    border-radius: 30%;
 }
 
 .button:active {
