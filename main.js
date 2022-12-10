@@ -14,31 +14,51 @@ const body = document.querySelector('body');
 const numbersArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
 const operatorsArray = ['+', '-', '/', '*', '%'];
 
-let numOne = '';
+let numOne = '0';
 let numTwo = '';
 let operator = '';
 
 buttonItems.forEach(function (button) {
     button.addEventListener('click', function () {
+        if (this.innerHTML === '+/-') {
+            if (numTwo == '' && numOne != '' && numOne != '0') {
+                numOne = (numOne * -1).toString();
+                output.setAttribute('value', numOne)
+            } else if (operator != '' && numTwo != '' && numTwo != '0') {
+                numTwo = (numTwo * -1).toString();
+                output.setAttribute('value', numTwo)
+            }
+        }
         if (this.innerHTML == 'C') {
             clear();
         } else if (this.innerHTML == 'CE') {
             if (numTwo == '') {
-                numOne = numOne.slice(0, -1);
-                output.setAttribute('value', numOne);
-                operator = '';
+                if (numOne.length == 2 && numOne.includes('-') || numOne == '0' || numOne == '' || numOne == 'Ошибка!') {
+                    numOne = '0';
+                    output.setAttribute('value', numOne);
+                } else {
+                    numOne = numOne.slice(0, -1);
+                    if (numOne == '') numOne = '0';
+                    output.setAttribute('value', numOne);
+                }
             } else {
-                numTwo = numTwo.slice(0, -1);
-                output.setAttribute('value', numTwo);
+                if (numTwo.length == 2 && numTwo.includes('-') || numTwo == '0' || numTwo == '') {
+                    numTwo = '0';
+                    output.setAttribute('value', numTwo);
+                } else {
+                    numTwo = numTwo.slice(0, -1);
+                    if (numTwo == '') numTwo = '0';
+                    output.setAttribute('value', numTwo);
+                }
             }
             if (!numOne.includes('.') && !numTwo.includes('.')) {
                 dotButton.removeAttribute('disabled', '')
             }
             if (output.getAttribute('value') == '') output.setAttribute('value', 0);;
         } else if (numbersArray.includes(button.innerHTML)) {
-            if (numOne !== '' && operator != '') {
+            if (numOne != '' && operator != '') {
                 if (this.innerHTML == '0' && output.value == '0') {
-                    numTwo = 0;
+                    numTwo = '0';
                     output.setAttribute('value', numTwo);
                 } else {
                     if (numTwo == '0'){
@@ -55,7 +75,7 @@ buttonItems.forEach(function (button) {
                     output.setAttribute('value', numOne);
                 } else {
                     if (this.innerHTML == '0' && output.value == '0') {
-                        numOne = 0;
+                        numOne = '0';
                         output.setAttribute('value', numOne);
                     } else {
                         if (numOne == '0'){
@@ -95,7 +115,7 @@ buttonItems.forEach(function (button) {
                     output.setAttribute('value', numOne % numTwo);
                     if (numTwo == '0') {
                         output.setAttribute('value', 'Ошибка!');
-                        numOne = 0;
+                        numOne = '0';
                     } else {
                         let i = (numOne % numTwo).toFixed(2).toString();
                         output.setAttribute('value', i);
@@ -112,7 +132,7 @@ buttonItems.forEach(function (button) {
                 case '/':
                     if (numTwo == '0') {
                         output.setAttribute('value', 'Ошибка!');
-                        numOne = 0;
+                        numOne = '0';
                     } else {
                         let i = (numOne / numTwo).toFixed(2).toString();
                         output.setAttribute('value', i);
@@ -136,7 +156,7 @@ buttonItems.forEach(function (button) {
 function clear() {
     output.setAttribute('value', 0);
     dotButton.removeAttribute('disabled', '')
-    numOne = '';
+    numOne = '0';
     numTwo = '';
     operator = '';
 }
