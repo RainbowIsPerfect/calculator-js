@@ -10,6 +10,9 @@ const textAlignButton = document.querySelector('#output-text-align-button');
 const themeButton = document.querySelector('#theme');
 const calcVersion = document.querySelector('.calc-name');
 const body = document.querySelector('body');
+const controlButtonsList = document.querySelector('.style-buttons-list');
+const controlButtonsItem = Array.from(controlButtonsList.children);
+console.log(controlButtonsItem);
 
 const numbersArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
 const operatorsArray = ['+', '-', '/', '*', '%'];
@@ -182,11 +185,18 @@ themeButton.addEventListener('click', function () {
         calcVersion.classList.add('calc-name-light-theme');
         output.classList.add('output-light-theme');
         body.classList.add('body-light-theme');
+        controlButtonsItem.forEach(function (button) {
+            button.classList.add('style-button-light-theme')
+        })
     } else {
         calcBlock.classList.remove('calc-light-theme');
         buttonItems.forEach(button => button.classList.remove('button-light-theme'));
         calcVersion.classList.remove('calc-name-light-theme');
         output.classList.remove('output-light-theme');
         body.classList.remove('body-light-theme');
+        controlButtonsItem.forEach(function (button) {
+            button.classList.remove('style-button-light-theme')
+        })
     }
 })
+

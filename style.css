@@ -27,7 +27,6 @@ body {
     background-color: rgb(43, 43, 43);
     border: 1px solid black;
     max-width: 500px;
-    min-width: 300px;
     color: white;
     padding: 10px 20px 50px 20px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 1),
@@ -62,7 +61,7 @@ body {
     cursor: pointer;
     border-radius: 5px;
     color: white;
-    background-image: linear-gradient(to bottom right, rgb(107, 107, 107) 5%,rgb(70, 70, 70));
+    background-image: linear-gradient(to bottom right, rgb(44, 44, 44) 5%,rgb(59, 59, 59));
     box-shadow: 0px 2px 2px 3px rgb(44, 44, 44);
     user-select: none;
     transition: border-radius 0.1s ease, transform 0.2s ease;
@@ -132,20 +131,33 @@ a.calc-name-light-theme {
     justify-content: space-between;
     margin-bottom: 30px;
 }
-
+.style-buttons-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
 .style-button {
     border-radius: 10px;
     background-color: black;
     color: white;
     padding: 10px;
     cursor: pointer;
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
     margin-bottom: 5px;
+    font-weight: 700;
 }
 .style-button:hover {
     background-color: rgb(59, 59, 59);
 }
-
+.style-button-light-theme {
+    color: black;
+    background-color: rgb(204, 204, 204);
+}
+.style-button-light-theme:hover {
+    background-color: rgb(221, 221, 221);
+}
 input[type="checkbox"] {
     display: none;
 }
@@ -178,4 +190,46 @@ input[type="checkbox"]:checked + label {
     top: -1px;
     left: -2px;
     transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 400px) {
+    .buttons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .output {
+        max-width: 220px;
+    }
+    .clear-button {
+        grid-column: 2 / 4;
+        grid-row: 1 / 2;
+    }
+    .del-button {
+        grid-row: 1 / 2;
+    }
+    .add-button {
+        grid-row: 2 / 3;
+        grid-column: 1 / 2;
+    }
+    .sub-button {
+        grid-row: 2 / 3;
+        grid-column: 2 / 3;
+    }
+    .mult-button {
+        grid-row: 3 / 4;
+        grid-column: 1 / 2;
+    }
+    .div-button {
+        grid-row: 3 / 4;
+        grid-column: 2 / 3;
+    }
+    .calc {
+        padding: 10px 15px 25px 15px;
+    }
+    .output {
+        padding: 3px 10px;
+        font-size: 25px;
+    }
+    .button {
+        padding: 10px;
+    }
 }
